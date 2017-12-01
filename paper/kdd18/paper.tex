@@ -1,10 +1,8 @@
-\documentclass[sigconf]{acmart}
+\documentclass[acmlarge]{acmart}
 
 \usepackage{booktabs} % For formal tables
 
-
-%\documentclass[10pt,conference,balance,letterpaper]{sig-alternate-05-2015}
-\special{papersize=8.5in,11in}
+%\special{papersize=8.5in,11in}
 %\usepackage{latexsym}
 %\usepackage{amsfonts}
 %\usepackage{amsmath}
@@ -88,43 +86,7 @@
 \newcommand{\NOT}{{\sc not}\xspace}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ALGORITHMS
 
-\newcommand{\spara}[1]{\smallskip\noindent{\bf #1}}
 \newcommand{\eat}[1]{}
-\newcommand{\squishlist}{
- \begin{list}{$\bullet$}
-  {  \setlength{\itemsep}{0pt}
-     \setlength{\parsep}{3pt}
-     \setlength{\topsep}{3pt}
-     \setlength{\partopsep}{0pt}
-     \setlength{\leftmargin}{2em}
-     \setlength{\labelwidth}{1.5em}
-     \setlength{\labelsep}{0.5em}
-} }
-\newcommand{\squishlisttight}{
- \begin{list}{$\bullet$}
-  { \setlength{\itemsep}{0pt}
-    \setlength{\parsep}{0pt}
-    \setlength{\topsep}{0pt}
-    \setlength{\partopsep}{0pt}
-    \setlength{\leftmargin}{2em}
-    \setlength{\labelwidth}{1.5em}
-    \setlength{\labelsep}{0.5em}
-} }
-
-\newcommand{\squishdesc}{
- \begin{list}{}
-  {  \setlength{\itemsep}{0pt}
-     \setlength{\parsep}{3pt}
-     \setlength{\topsep}{3pt}
-     \setlength{\partopsep}{0pt}
-     \setlength{\leftmargin}{1em}
-     \setlength{\labelwidth}{1.5em}
-     \setlength{\labelsep}{0.5em}
-} }
-
-\newcommand{\squishend}{
-  \end{list}
-}
 \newcommand{\sttab}{\rule{0pt}{8pt}\\[-3ex]}
 \newcounter{ccc}
 \newcommand{\bcc}{\setcounter{ccc}{1}\theccc.}
@@ -145,88 +107,6 @@
 \renewcommand{\ni}{\noindent}
 
 
-\newcommand{\nthesection}{\arabic{section}}
-\newcounter{theoremc}
-\renewcommand{\thetheorem}{\arabic{theoremc}}
-\newcounter{prop}
-\renewcommand{\theprop}{\thetheorem}
-\newcounter{property}
-\renewcommand{\theprop}{\thetheorem}
-\newcounter{lemma}
-\renewcommand{\thelemma}{\thetheorem}
-\newcounter{cor}
-\renewcommand{\thecor}{\thetheorem}
-\renewenvironment{theorem}{\begin{em}
-        \refstepcounter{theoremc}
-        {\vspace{1ex} \noindent\bf  Theorem  \thetheorem:}}{
-        \end{em}\eop\vspace{.5ex}} %\hspace*{\fill}\vspace*{1ex}}
-\newenvironment{prop}{\begin{em}
-        \refstepcounter{theoremc}
-        {\vspace{1ex}\noindent \bf Proposition \theprop:}}{
-        \end{em}\eop\vspace{0.5ex}}%\hspace*{\fill}\vspace*{1ex}}
-\renewenvironment{lemma}{\begin{em}
-        \refstepcounter{theoremc}
-        {\vspace{1ex}\noindent\bf Lemma \thelemma:}}{
-        \end{em}\eop\vspace{0.5ex}} %\hspace*{\fill}\vspace*{1ex}}
-\newenvironment{cor}{\begin{em}
-        \refstepcounter{theoremc}
-        {\vspace{1ex}\noindent\bf Corollary \thecor:}}{
-        \end{em}\eop\vspace{0.5ex}} %\hspace*{\fill}\vspace*{1ex}}
-\newcounter{claim}
-\renewcommand{\theclaim}{\thetheorem}
-\newenvironment{claim}{\begin{em}
-        \refstepcounter{theoremc}
-        {\vspace{1ex}\noindent \bf Claim \theclaim:}}{
-        \end{em}\eop\vspace{0.5ex}}%\hspace*{\fill}\vspace*{1ex}}
-\newcounter{definition}[section]
-\renewcommand{\thedefinition}{\nthesection.\arabic{definition}}
-\renewenvironment{definition}{
-        \vspace{1.5ex}
-        \refstepcounter{definition}
-        {\noindent\bf Definition {\bf \thedefinition}:}}{\eop\vspace{1.5ex}
-}
-\newcounter{alg}[section]
-\renewcommand{\thealg}{\nthesection.\arabic{alg}}
-\newenvironment{alg}[1]{
-        \refstepcounter{alg}
-        {\vspace{1ex}\noindent\bf Algorithm \thealg:\, #1}}{
-        \vspace*{1ex}}
-\newcounter{arule}
-\renewcommand{\thearule}{\arabic{arule}}
-\newenvironment{arule}{
-        \vspace{0.6ex}
-        \refstepcounter{arule}
-        {\noindent \em Rule \thearule:}}{
-        }
-%\renewenvironment{proof}{
-\renewenvironment{proof}{
-        \vspace{.5ex}
-        {\noindent\bf Proof:}}{\eop\vspace{.5ex}}
-\newenvironment{proofS}{
-        \vspace{0ex}
-        {\noindent\bf Proof:}}{\eop\vspace{0ex}}
-\newenvironment{proofSketch}{
-        \vspace{.5ex}
-        {\noindent\bf Proof Sketch:}}{\eop\vspace{.5ex}}
-\newenvironment{property}{
-        \vspace{1ex}
-        {\noindent\bf Property:}}{\eop\vspace{1ex}}
-
-
-\newcommand{\lemmachar}{{\unskip\nobreak\hfil\penalty50\hskip1em\hbox{}%
-\nobreak\hfil\rule{1.2ex}{1.4ex}\hfil%
-\parfillskip=0pt \finalhyphendemerits=0 \par}}
-
-
-\newcommand{\eop}{\hspace*{\fill}\mbox{$\Box$}}     % End of proof
-\newcounter{example}
-\renewcommand{\theexample}{\arabic{example}}
-\renewenvironment{example}{
-        \vspace{1ex}
-        \refstepcounter{example}
-        {\noindent\bf Example \theexample:}}{
-        \eop\vspace{0.5ex}}
-
 \newcommand{\ie}{\emph{i.e.,}\xspace}
 \newcommand{\eg}{\emph{e.g.,}\xspace}
 \newcommand{\wrt}{\emph{w.r.t.}\xspace}
@@ -234,12 +114,6 @@
 \newcommand{\kw}[1]{{\ensuremath {\mathsf{#1}}}\xspace}
 
 %baselines
-\newcommand{\ewpr}{{\sc EWPR}\xspace}
-\newcommand{\ewprall}{$\kw{EWPR^*}$}
-\newcommand{\blpr}{{\sc PR}\xspace}
-\newcommand{\blwpr}{{\sc WPR}\xspace}
-\newcommand{\blmulrank}{\kw{MulRank}}
-
 \newcommand{\pagerank}{\kw{PRank}} %PageRank
 \newcommand{\futurerank}{\kw{FRank}} %FutureRank
 \newcommand{\hhgrank}{\kw{HRank}} %HHGBiRank
@@ -264,44 +138,104 @@
 \newcommand{\fcita}{{\sc FCita}\xspace}
 
 
+\usepackage[ruled]{algorithm2e} % For algorithms
+\renewcommand{\algorithmcfname}{ALGORITHM}
+\SetAlFnt{\small}
+\SetAlCapFnt{\small}
+\SetAlCapNameFnt{\small}
+\SetAlCapHSkip{0pt}
+\IncMargin{-\parindent}
+
+% Metadata Information
+\acmJournal{IMWUT}
+\acmVolume{0}
+\acmNumber{0}
+\acmArticle{00}
+\acmYear{2018}
+\acmMonth{3}
+\acmArticleSeq{00}
+
+%\acmBadgeR[http://ctuning.org/ae/ppopp2016.html]{ae-logo}
+%\acmBadgeL[http://ctuning.org/ae/ppopp2016.html]{ae-logo}
 
 
 % Copyright
-%\setcopyright{none}
 %\setcopyright{acmcopyright}
 %\setcopyright{acmlicensed}
-\setcopyright{rightsretained}
+%\setcopyright{rightsretained}
 %\setcopyright{usgov}
-%\setcopyright{usgovmixed}
+\setcopyright{usgovmixed}
 %\setcopyright{cagov}
 %\setcopyright{cagovmixed}
 
-
 % DOI
-\acmDOI{10.475/123_4}
+\acmDOI{0000001.0000001}
 
-% ISBN
-%\acmISBN{123-4567-24-567/08/06}
-
-%Conference
-\acmConference[KDD'18]{ACM KDD conference}{August, 2018}{London, United Kingdom.}
-\acmYear{2018}
-\copyrightyear{2018}
-
-\acmPrice{15.00}
+% Paper history
+\received{February 2018}
+\received{XXXX 2018}
+\received[accepted]{XXXX 2018}
 
 
-
+% Document starts
 \begin{document}
-
-
+% Title portion
 \title{Multi-Scenario Traffic Speed and Flow Prediction}
 
 \title{Towards Expected Fastest Route Computation}
+%\titlenote{We can add a note to the title}
+
+\author{Renjun Hu}
+%\authornote{This is the corresponding author}
+\orcid{1234-5678-9012-3456}
+\affiliation{%
+  \institution{SKLSDE Lab, Beihang University}
+  \streetaddress{37 Xueyuan Rd}
+  \city{Haidian Qu}
+  \state{Beijing Shi}
+  \country{China}}
+\email{hurenjun@buaa.edu.cn}
+\author{Junming Liu}
+\affiliation{%
+  \institution{Rutgers University}
+  \department{Rutgers Business School}
+  \city{Newark}
+  \state{NJ}
+  \postcode{07102}
+  \country{USA}}
+\email{jl1433@rutgers.edu}
+\author{Hui Xiong}
+\affiliation{%
+   \institution{Rutgers University}
+  \department{Rutgers Business School}
+  \city{Newark}
+  \state{NJ}
+  \postcode{07102}
+  \country{USA}}
+\email{hxiong@rutgers.edu}
+\author{Shuai Ma}
+\affiliation{%
+  \institution{SKLSDE Lab, Beihang University}
+  \streetaddress{37 Xueyuan Rd}
+  \city{Haidian Qu}
+  \state{Beijing Shi}
+  \country{China}}
+\email{mashuai@buaa.edu.cn}
+\author{Jinpeng Huai}
+\affiliation{%
+  \institution{SKLSDE Lab, Beihang University}
+  \streetaddress{37 Xueyuan Rd}
+  \city{Haidian Qu}
+  \state{Beijing Shi}
+  \country{China}}
+\email{huaijp@buaa.edu.cn}
 
 
 
-\eat{
+
+
+
+\eat{   %%% conference short author list
 \author{
 Renjun Hu$^{1,2}$, Junming Liu$^3$, Hui Xiong$^3$, Shuai Ma$^{1,2}$, Jinpeng Huai$^{1,2}$}
 \affiliation{%
@@ -311,9 +245,8 @@ Renjun Hu$^{1,2}$, Junming Liu$^3$, Hui Xiong$^3$, Shuai Ma$^{1,2}$, Jinpeng Hua
   \institution{\{hurenjun, mashuai, huaijp\}@buaa.edu.cn \hspace{12ex} \{jl1433, hxiong\}@rutgers.edu}
 }
 }%%%%%EAT
-
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\eat{
 \author{Renjun Hu}
 \affiliation{%
   \institution{SKLSDE Lab, Beihang University}
@@ -349,19 +282,79 @@ Renjun Hu$^{1,2}$, Junming Liu$^3$, Hui Xiong$^3$, Shuai Ma$^{1,2}$, Jinpeng Hua
   \institution{SKLSDE Lab, Beihang University}
 }
 \email{huaijp@buaa.edu.cn}
-
-
-% The default list of authors is too long for headers}
-\renewcommand{\shortauthors}{R. Hu et al.}
+}
 
 
 \begin{abstract}
 Abstract.
 \end{abstract}
 
+
+%
+% The code below should be generated by the tool at
+% http://dl.acm.org/ccs.cfm
+% Please copy and paste the code instead of the example below.
+%
+\eat{
+\begin{CCSXML}
+<ccs2012>
+ <concept>
+  <concept_id>10010520.10010553.10010562</concept_id>
+  <concept_desc>Computer systems organization~Embedded systems</concept_desc>
+  <concept_significance>500</concept_significance>
+ </concept>
+ <concept>
+  <concept_id>10010520.10010575.10010755</concept_id>
+  <concept_desc>Computer systems organization~Redundancy</concept_desc>
+  <concept_significance>300</concept_significance>
+ </concept>
+ <concept>
+  <concept_id>10010520.10010553.10010554</concept_id>
+  <concept_desc>Computer systems organization~Robotics</concept_desc>
+  <concept_significance>100</concept_significance>
+ </concept>
+ <concept>
+  <concept_id>10003033.10003083.10003095</concept_id>
+  <concept_desc>Networks~Network reliability</concept_desc>
+  <concept_significance>100</concept_significance>
+ </concept>
+</ccs2012>
+\end{CCSXML}
+
+\ccsdesc[500]{Computer systems organization~Embedded systems}
+\ccsdesc[300]{Computer systems organization~Redundancy}
+\ccsdesc{Computer systems organization~Robotics}
+\ccsdesc[100]{Networks~Network reliability}
+
+%
+% End generated code
+%
+}%%%%EAT
+
+%\keywords{Wireless sensor networks, media access control,
+%multi-channel, radio interference, time synchronization}
+
+% DO NOT use this command unless you want to change
+% the default behavior
+% \authorsaddresses{Authors' addresses: G.~Zhou, Computer Science
+%   Department, College of William and Mary, 104 Jameson Rd,
+%   Williamsburg, PA 23185, US, \path{gzhou@wm.edu}; V.~B\'eranger,
+%   Inria Paris-Rocquencourt, Rocquencourt, France; A.~Patel, Rajiv
+%   Gandhi University, Rono-Hills, Doimukh, Arunachal Pradesh, India;
+%   H.~Chan, Tsinghua University, 30 Shuangqing Rd, Haidian Qu, Beijing
+%   Shi, China; T.~Yan, Eaton Innovation Center, Prague, Czech Republic;
+%   T.~He, C.~Huang, J.~A.~Stankovic University of Virginia, School of
+%   Engineering Charlottesville, VA 22903, USA; T. F. Abdelzaher,
+%   (Current address) NASA Ames Research Center, Moffett Field,
+%   California 94035.}
+
 \maketitle
 
-\input{manuscript}
+% The default list of authors is too long for headers.
+\renewcommand{\shortauthors}{R. Hu et al.}
+
+
+%\input{manuscript}
 \input{sec-intro}
 \input{sec-exp}
 \input{sec-related}
@@ -373,8 +366,10 @@ Conclusions.
 
 
 \eat{%%%%%%%%%%%%EAT
-\stitle{Acknowledgments}.
+\begin{acks}
+%\stitle{Acknowledgments}.
 This work is supported in part by  973 program ({\small No. 2014CB340300}), NSFC ({\small No. 61322207\&61421003}),  Special Funds of Beijing Municipal Science \& Technology Commission, and MSRA Collaborative Research Program.
+\end{acks}
 }%%%%%%%%%%%%%%%%EAT
 
 
