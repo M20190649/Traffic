@@ -12,7 +12,7 @@ Given the speed of road segments (represented by a speed vector $v$) at the curr
 Key: local propagation, \ie sparsity / time dependent / fully data-driven (i. number of time slots and ii. probability by frequency and beyond)
 
 
-\stitle{Enforcing local propagation}. 
+\stitle{Enforcing local propagation}.
 {\em motivation of local propagation.}
 We present two methods to enforce local propagation such that the speed only propagates to road segments nearby.
 
@@ -36,6 +36,7 @@ The second method learns the local propagation from the topology of the underlyi
 5. Repeat 1--4 for $K$ times; \\
 6. select pairs with the most occurrence times;
 
+{\em Selection of radius $R$.} A reasonable selection of radius, \eg 1km or 2 km, suffices for our model. If the real propagation area is larger than $R$, the road segments with $R$ is still enough. If the real propagation area is less than $R$, let the weights learned later be close to zero.
 
 \stitle{Learning propagation weights}.
 
