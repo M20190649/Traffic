@@ -4,11 +4,13 @@
 Modeling traffic flows is one of the most fundamental issues for urban transportation problems. It aims to continuously predict the traffic flows on each road segments. An accurate traffic flow prediction model can benefit numerous real-life tasks, such as travel time estimation, intelligent driving direction, traffic congestion detection and urban planning~\cite{Zheng2014TIST}.
 
 
-{\em flaws of historical speed based methods.} Traffic flow is XXXXXXX in real-life. {\em reasons and examples of dynamism.} {\em problems of ignoring the dynamism}
+{\em flaws of historical speed based methods.} Traffic flow is XXXXXXX in real-life. {\em reasons and examples of dynamism.} {\em problems of ignoring the dynamism}.
+%
+Existing models predict the flows on road segments at specific time slot. The main idea behind these models is that ``similar" road segments share similar traffic condition, and road segments at the same time slot share similar traffic. Specifically, these model exploit low rank matrix decomposition to reveal the hidden structure of traffic condition matrix which records the traffic condition of each road segment spanning a period of time. However, the derived latent factors only preserve the main structure of the matrix, and, hence, cannot deal with the traffic flows in {\em anomalous cases}, \eg road works, events, accidents.
 
 {\em need for collective route planning}
 
-{\bf Existing models} predict the flows on road segments at specific time slot. The main idea behind these models is that ``similar" road segments share similar traffic condition, and road segments at the same time slot share similar traffic. Specifically, these model exploit low rank matrix decomposition to reveal the hidden structure of traffic condition matrix which records the traffic condition of each road segment spanning a period of time. However, the derived latent factors only preserve the main structure of the matrix, and, hence, cannot deal with the traffic flows in {\em anomalous cases}, \eg road works, events, accidents.
+propagation model. aggregating data, less sparse and more accurate.
 
 \stitle{Goal}. To predict the city-wide traffic condition, \ie the number of vehicles and the traveling speed of each road segments.
 
