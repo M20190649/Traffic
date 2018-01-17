@@ -35,9 +35,10 @@ The second method learns the local propagation from the topology of the underlyi
 1. Randomly sample a starting point; \\
 2. Shortest paths to other nodes with Dijkstra; \\
 3. Parse the shortest path tree through Depth-First Search; \\
-4. generate local propagation road segment pairs and count their occurrence, the window size is determined such that the total length is less than a pre-defined radius (1km); \\
+4. generate local propagation road segment pairs and count their occurrence, add self-self loop (next based on current), the window size is determined such that the total length is less than a pre-defined radius (500km); \\
 5. Repeat 1--4 for $K$ times; \\
-6. select pairs with the most occurrence times;
+6. Make sure that every road segment has in-edges (traffic condition at next timestamp can be computed based on propagation), self-loop and direct-edge; \\
+7. select pairs with the most occurrence times;
 
 {\em Selection of radius $R$.} A reasonable selection of radius, \eg 1km or 2 km, suffices for our model. If the real propagation area is larger than $R$, the road segments with $R$ is still enough. If the real propagation area is less than $R$, let the weights learned later be close to zero.
 
