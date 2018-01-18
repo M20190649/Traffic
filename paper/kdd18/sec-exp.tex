@@ -1,4 +1,58 @@
 \section{Experimental Study}
 \label{sec-exp}
 
+Using two real-life datasets, we conduct an extensive experimental study of , compared with the state of the art methods .
+
+
+\subsection{Experimental Settings}
+
+We first introduce the settings of our experimental study.
+
+\stitle{Datasets}. We chose two datasets, \ie~\beijing and \shenzhen,  to test our approach.
+%
+Each of the two datasets consists of the road network\footnote{https://mapzen.com/data/metro-extracts/metro/beijing\_china/ \& https://mapzen.com/data/metro-extracts/metro/shenzhen\_china/} of the corresponding city in China (\ie city Beijing and city Shenzhen) and the taxi trajectories. The trajectory data of \beijing is collected in three months (12/01/2013 -- 02/28/2014) and the one of \shenzhen is collected in one month (12/01/2013 -- 12/31/2013). Table~1 gives a summary of some statistics on the two datasets.
+
+Each trajectory data point contains: (a) a timestamp, (b) a location specified by the latitude and the longitude and (c) a driving status describing the speed and the direction. We preprocessed the two datasets by filtering out stay points and out-of-bounds points from the trajectory data and using the map matching algorithm~\cite{Newson2009MM} to derive a sequence of traveled road segments given a trajectory. The speed of each trajectory data point was then assigned to the closest road segment in the matched sequence.
+
+
+
+%\sstab(1) \beijing consists of the road network of Beijing, China\footnote{https://mapzen.com/data/metro-extracts/metro/beijing\_china/} and the taxi trajectories collected in three months (\ie 12/01/2013 -- 02/28/2014).
+%The road network contains xx intersections and yy (directed) road segments. The trajectory data is collected in three months (\ie 12/01/2013 -- 02/28/2014), containing 12,791 taxicabs and a total of zz unique GPS points.
+%\sstab(2) \shenzhen consists of the road network of Shenzhen, China\footnote{https://mapzen.com/data/metro-extracts/metro/shenzhen\_china/} and the taxi trajectories collected in one month (\ie 12/01/2013 -- 12/31/2013).
+%Its road network contains xx intersections and yy (directed) road segments. The trajectory data is collected in three months (\ie 12/01/2013 -- 02/28/2014), containing 12,791 taxicabs and a total of zz unique GPS points.
+
+%%%%%%%%%%%%%%%%%%% Dataset Statistics Table
+\begin{table}[tb!]
+%\vspace{-2ex}
+\label{tab-data-stat}
+\caption{Summary of Dataset Statistics}
+\vspace{-3.5ex}
+\begin{center}
+\begin{small}
+\vspace{1ex}
+\begin{tabular}{|c|c|c|c|c|c|} \hline
+&  \multicolumn{3}{c|}{\bf Road Network Statistics}   & \multicolumn{2}{c|}{\bf Trajectory Data Statistics}   \\ \cline{2-6}
+\raisebox{1ex}[0pt]{\bf Datasets} & {\bf \# of Nodes} & {\bf \# of Edges} & {\bf Total Length}  & {\bf \# of Taxicabs} & {\bf \# of Data Points} \\
+\hline
+\beijing      &  x & x & x & x & x          \\ \hline
+\shenzhen      &  y & y & y & y & y        \\ \hline
+\end{tabular}
+\vspace{0ex}
+\end{small}
+\end{center}
+{aa}
+\end{table}
+%%%%%%%%%%%%%%%%%%% Dataset Statistics Table
+
+
+\stitle{Algorithms and implementation}.
+Algorithms were all implemented with Java, including the state of the art algorithm  and the synthetic data generator that are available at {\small http://www.cs.ucsb.edu/\~dbl/software.php}.
+
+All experiments were run on a PC with 2 Intel Xeon
+E5--2630 2.4GHz CPUs and 64 GB of memory. The usage of virtual memory was forbidden in all our tests. When quantity measures are evaluated, the test was repeated over 5 times and the average is reported here.
+
+
+
+\subsection{Experimental Results}
+
 

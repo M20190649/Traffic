@@ -113,29 +113,21 @@
 \newcommand{\aka}{\emph{a.k.a.}\xspace}
 \newcommand{\kw}[1]{{\ensuremath {\mathsf{#1}}}\xspace}
 
-%baselines
-\newcommand{\pagerank}{\kw{PRank}} %PageRank
-\newcommand{\futurerank}{\kw{FRank}} %FutureRank
-\newcommand{\hhgrank}{\kw{HRank}} %HHGBiRank
-\newcommand{\ensemblerank}{\kw{SARank}}
-\newcommand{\batensemble}{\kw{batSARank}}
-\newcommand{\incensemble}{\kw{incSARank}}
-\newcommand{\powensemble}{\kw{powSARank}}
-
+%concepts
 \newcommand{\scc}{{\sc SCC}\xspace}
 \newcommand{\sccs}{{\sc SCCs}\xspace}
 
-\newcommand{\twprscc}{\kw{bat}{\sc TWPR}\xspace}
-\newcommand{\inctwprscc}{\kw{inc}{\sc TWPR}\xspace}
-\newcommand{\powtwprscc}{\kw{pow}{\sc TWPR}\xspace}
+%data set
+\newcommand{\beijing}{{\sc Beijing}\xspace}
+\newcommand{\shenzhen}{{\sc Shenzhen}\xspace}
+
+%baselines
+\newcommand{\pagerank}{\kw{PRank}} %PageRank
+
+%metric
 \newcommand{\PairAcc}{\kw{PairAcc}}
 
-%dataset
-\newcommand{\magdata}{{\sc MAG}\xspace}
-\newcommand{\aan}{{\sc AAN}\xspace}
-\newcommand{\aminer}{{\sc DBLP}\xspace}
-\newcommand{\recom}{{\sc Recom}\xspace}
-\newcommand{\fcita}{{\sc FCita}\xspace}
+
 
 
 \usepackage[ruled]{algorithm2e} % For algorithms
@@ -365,6 +357,7 @@ Abstract.
 
 
 \input{sec-intro}
+\input{sec-pre}
 \input{sec-method}
 \input{sec-exp}
 \input{sec-related}
