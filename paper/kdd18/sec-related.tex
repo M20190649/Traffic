@@ -1,12 +1,25 @@
 %\stitle{Related work}.
 \section{Related work}
 \label{sec-related}
+
 We summarize related work as follows.
 
-\stitle{Mobility pattern}.
+\stitle{Traffic Speed Prediction}. 
+time series-based method is the most popular solution in this domain. Specifically, auto-regression moving average (ARMA) models~\cite{TS2012ICDM}.
+multivariate spatial-temporal autoregressive (MSTAR)~\cite{traffic2011TRP}.
+Latent Space Model~\cite{LSM2016KDD}.
+Muti-task Learning~\cite{MTL2017ICDM}.
+Matrix decomposition~\cite{Zhu2013TMC,Shang2014KDD} and Tensor decomposition~\cite{Wang2014KDD}.
+Deep Learning~\cite{DL2016ICDM,DL2017SDM,DL2017CoRR}
 
-\stitle{Traffic Condition Modeling}. On individual road segments. On the entire road network: interpolation-based methods consider spatial correlation among different locations' traffic condition and the compressive sensing-based approaches~\cite{Zhu2013TMC} consider both spatial and temporal correlation (by filling empty values in a road-time matrix). The work in~\cite{Shang2014KDD} further incorporates two sets of additional knowledge, \ie geographic contexts of road segments and traffic pattern revealing the correlations between different time slots.
+\stitle{Route Planning}.
 
-\stitle{Traffic Congestion Propagation}. \cite{Nguyen2017TBD} discovers frequent patterns of congestion propagations in the traffic networks by a) discovering spatio-temporal congestions and causal relationships between them, b) revealing recurrent congestion patterns in the road network based on frequent subtree algorithm, and c) modelling the traffic congestion propagation probability. [SIGSPATIAL'17] takes a road network, the congestion conditions (when becoming congested, 20km/h) on each road segment spanning several days as input, and aims to infer the cascading patterns between road segments.
+\stitle{Others}. 
 
-\stitle{Others}. It is well known that more than 80\% of the traffic in a typical city runs on only 10\% to 20\% of the roads hence the trajectory data are expected to be sparse~\cite{WuMSZZCWKDD16}.
+
+
+%\stitle{Mobility pattern}.
+
+%\stitle{Traffic Condition Modeling}. On individual road segments. On the entire road network: interpolation-based methods consider spatial correlation among different locations' traffic condition and the compressive sensing-based approaches~\cite{Zhu2013TMC} consider both spatial and temporal correlation (by filling empty values in a road-time matrix). The work in~\cite{Shang2014KDD} further incorporates two sets of additional knowledge, \ie geographic contexts of road segments and traffic pattern revealing the correlations between different time slots.
+
+%\stitle{Traffic Congestion Propagation}. \cite{Nguyen2017TBD} discovers frequent patterns of congestion propagations in the traffic networks by a) discovering spatio-temporal congestions and causal relationships between them, b) revealing recurrent congestion patterns in the road network based on frequent subtree algorithm, and c) modelling the traffic congestion propagation probability. [SIGSPATIAL'17] takes a road network, the congestion conditions (when becoming congested, 20km/h) on each road segment spanning several days as input, and aims to infer the cascading patterns between road segments. 
