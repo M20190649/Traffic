@@ -4,17 +4,23 @@
 
 We summarize related work as follows.
 
-\stitle{Traffic Speed Prediction}. 
-time series-based method is the most popular solution in this domain. Specifically, auto-regression moving average (ARMA) models~\cite{TS2012ICDM}.
-multivariate spatial-temporal autoregressive (MSTAR)~\cite{traffic2011TRP}.
+\stitle{Traffic Speed Prediction}. The problem of traffic prediction is of great interest in recent years due to both the availability of big traffic data and its fundamental importance for a broad range of urban computing tasks~\cite{Zheng2014TIST}.
+%
+Since traffic speed is essentially a type of time series data, time series analysis has been extensively exploited in this domain~\cite{traffic2011TRP,TS2012ICDM}. Notably, in~\cite{TS2012ICDM} the authors enhance the tradition auto-regression integrated moving average (ARIMA) model to further incorporate the knowledge from both historical data and traffic incidents.
+
+
 Latent Space Model~\cite{LSM2016KDD}.
 Muti-task Learning~\cite{MTL2017ICDM}.
 Matrix decomposition~\cite{Zhu2013TMC,Shang2014KDD} and Tensor decomposition~\cite{Wang2014KDD}.
 Deep Learning~\cite{DL2016ICDM,DL2017SDM,DL2017CoRR}
 
+%\cite{traffic2011TRP}: multivariate spatial-temporal autoregressive, at a fine granularity (5 min) and over multiple time periods (12 * 5min)
+%\cite{TS2012ICDM}: short-term t+1 (1 time interval, e.g., 5min), long-term t+(>1)
+
 \stitle{Route Planning}.
 
 \stitle{Others}. 
+
 
 
 

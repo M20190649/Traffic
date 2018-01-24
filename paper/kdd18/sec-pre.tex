@@ -18,7 +18,7 @@ and then formulate the two problems to be investigated.
 \begin{definition}[Trajectory]A trajectory $Tr$ is a sequence of timestamped spatial points, $Tr = (p_1 \rightarrow p_2 \rightarrow \dots \rightarrow p_n)$ where each point $p_i$ ($i\in[1,n]$) contains a timestamp $t_i$ and a geographic coordinate specified by the latitude $lat_i$ and the longitude $lon_i$, \ie $p_i=(t_i,lat_i,lon_i)$.
 \end{definition}
 
-The spatial and temporal information are the most fundamental and importance parts of trajectories. In real life, the objects that generate trajectories are also possible to be equipped with various sensors, like taxicabs with speed sensors. In these situations, each trajectory point can also be assigned with other information besides the timestamp and geographic coordinate, \eg taxicab trajectories with driving speed and direction.
+The spatial and temporal information are the most fundamental and important parts in trajectory data. In real life, the objects that generate trajectories are also possible to be equipped with various sensors, like taxicabs with speed sensors. In these situations, each trajectory point can also be assigned with other information besides the timestamp and geographic coordinate, \eg taxicab trajectories with driving speed and direction.
 
 
 \begin{definition}[Map Matching]Given a trajectory, map matching~\cite{Newson2009MM,WuMSZZCWKDD16} is the process of finding the most likely sequence of road segments on which the object passes and generates the trajectory.
@@ -30,12 +30,14 @@ Map matching plays an important role in various trajectory data mining tasks~\ci
 \subsection{Problem Formulation}
 \label{subsec-problem}
 
-Based on the above definitions, we can now formally defined the two problems studied in this work,  \ie~{\em proactive traffic speed prediction} and {\em collective route planning}.
+Based on the definitions above, we can now formally define the two problems studied in this work,  \ie~{\em proactive traffic speed prediction} and {\em collective route planning}.
 
 \begin{definition}[Proactive Traffic Speed Prediction]Given the real-time traffic speed on road segments, the problem of proactive traffic speed prediction (\ptsp) aims to predict the traffic speed of {\em arbitrarily} road segment at {\em arbitrarily} time in the future. %in $\Delta T$ time later, where the prediction time lag $\Delta T$ can be assigned {\em arbitrarily}.
 \end{definition}
 
 The \ptsp problem differs from traditional traffic speed prediction in the sense that it xxx, while traditional traffic speed prediction focuses on predicting the speed at the next time slot or in the near future. {\bf detailed analysis of the difference.}
+
+fixed time points vs. time points in need
 
 Note that the real-time traffic condition is usually collected by static traffic sensors or floating vehicles. Static traffic sensors can only cover a small portion of road segments due to the maintenance cost. On the other hand, more than 80\% of the traffic in a typical city runs on only 10\% to 20\% of the roads~\cite{WuMSZZCWKDD16}. As a result, the incomplete and sparse data becomes a challenge faced by all traffic prediction solutions~\cite{Zhu2013TMC,Shang2014KDD,Lu2017Speed}.
 
