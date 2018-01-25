@@ -2,24 +2,36 @@
 \section{Related work}
 \label{sec-related}
 
-We summarize related work as follows.
+This section summarizes related work from three aspects: traffic speed prediction, route planning and others.
 
-\stitle{Traffic Speed Prediction}. The problem of traffic prediction is of great interest in recent years due to both the availability of big traffic data and its fundamental importance for a broad range of urban computing tasks~\cite{Zheng2014TIST}.
+\stitle{Traffic speed prediction}. The problem of traffic speed prediction is of great interest in recent years due to both the availability of big traffic data and its fundamental importance in a broad range of urban computing tasks~\cite{Zheng2014TIST}.
 %
-Since traffic speed is essentially a type of time series data, time series analysis has been extensively exploited in this domain~\cite{traffic2011TRP,TS2012ICDM}. Notably, in~\cite{TS2012ICDM} the authors enhance the tradition auto-regression integrated moving average (ARIMA) model to further incorporate the knowledge from both historical data and traffic incidents.
+Since traffic speed is essentially a type of time series data, time series analysis~\cite{time-series-book} has been extensively exploited in this domain, \eg~\cite{traffic2011TRP,TS2012ICDM,HMM2013VLDB,MTL2017ICDM}. In~\cite{TS2012ICDM}, the authors enhance the tradition auto-regression integrated moving average (ARIMA) model to further incorporate the knowledge from both historical data and traffic incidents.
 
+Research efforts have been made to exploit spatiotemporal similarities and road correlations for traffic speed prediction~\cite{Zhu2013TMC,Shang2014KDD,Wang2014KDD,LSM2016KDD,MTL2017ICDM,HMM2013VLDB}.
+%
+One study~\cite{HMM2013VLDB} uses spatio-temporal hidden Markov models to model correlations among different traffic time series.
+%
+The studies in~\cite{Zhu2013TMC,Shang2014KDD,Wang2014KDD} first construct a traffic condition matrix or tensor, and then recovers the missing values, \ie traffic speed, through compressive sensing~\cite{Zhu2013TMC}, and matrix/tensor decomposition~\cite{Shang2014KDD,Wang2014KDD}.
+%
+In~\cite{LSM2016KDD}, the authors explore latent space modeling for road networks and take  into account the network topology as well as temporal and transition patterns.
+%
+A situation-aware muti-task learning model is proposed in~\cite{MTL2017ICDM}, which clusters speed sensors to automatically identify traffic situations and trains sensors in the same situations as tasks.
+%
+Recently, deep learning techniques have also been applied, \eg recurrent convolutional neural network~\cite{DL2016ICDM} and long short term memory~\cite{DL2017SDM}.
 
-Latent Space Model~\cite{LSM2016KDD}.
-Muti-task Learning~\cite{MTL2017ICDM}.
-Matrix decomposition~\cite{Zhu2013TMC,Shang2014KDD} and Tensor decomposition~\cite{Wang2014KDD}.
-Deep Learning~\cite{DL2016ICDM,DL2017SDM,DL2017CoRR}
+Our proactive traffic speed prediction model is different from existing studies in two folds. 
 
-%\cite{traffic2011TRP}: multivariate spatial-temporal autoregressive, at a fine granularity (5 min) and over multiple time periods (12 * 5min)
-%\cite{TS2012ICDM}: short-term t+1 (1 time interval, e.g., 5min), long-term t+(>1)
+%\cite{traffic2011TRP}: multivariate spatial-temporal autoregressive; at a fine granularity (5 min) and over multiple time periods (12 * 5min)
+%\cite{TS2012ICDM}: short-term t+1 (1 time interval, e.g., 5min), long-term t+(>1); select either ARIMA or HAM w.r.t. t; retrieval the most similar incident;
+%\cite{Zhu2013TMC,Shang2014KDD,Wang2014KDD} compressive sensing, matrix decomposition and sensor decomposition; at current time;
+%\cite{LSM2016KDD} Latent Space Model; topology/temporal, fast evolving, dynamic and on-line; both missing at existing and future;
+%\cite{MTL2017ICDM} Muti-task Learning each task corresponds to a situation; situation-aware through clustering;
+%~\cite{HMM2013VLDB} sparse, dependent and heterogeneous time series; spatial-temporal HMM
 
-\stitle{Route Planning}.
+\stitle{Route planning}.
 
-\stitle{Others}. 
+\stitle{Others}.
 
 
 

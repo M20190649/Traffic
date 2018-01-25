@@ -7,7 +7,8 @@ and then formulate the two problems to be investigated.
 \subsection{Basic Definitions}
 \label{subsec-definition}
 
-\begin{definition}[Road Network]A road network is a directed graph $G(V, E)$ where $V$ denotes the set of intersections or road ends, and $E$ denotes the set of road segments. A directed edge $(s, t)$ means that there exists a road segment connecting nodes $s$ and $t$, and people can only travel from $s$ to $t$.
+\begin{definition}[Road Network]A road network is a directed graph $G(V, E)$ where $V$ denotes the set of road intersections or road ends, and $E\subseteq V\times V$ denotes the set of road segments. A directed edge $(s, t)\in E$ %connecting nodes $s$ and $t$
+means that there exists a road segment that can only be traveled from $s$ to $t$.
 \end{definition}
 
 
@@ -15,7 +16,7 @@ and then formulate the two problems to be investigated.
 \end{definition}
 
 
-\begin{definition}[Trajectory]A trajectory $Tr$ is a sequence of timestamped spatial points, $Tr = (p_1 \rightarrow p_2 \rightarrow \dots \rightarrow p_n)$ where each point $p_i$ ($i\in[1,n]$) contains a timestamp $t_i$ and a geographic coordinate specified by the latitude $lat_i$ and the longitude $lon_i$, \ie $p_i=(t_i,lat_i,lon_i)$.
+\begin{definition}[Trajectory]A trajectory $\mathcal{T}$ is a sequence of timestamped spatial points, $\mathcal{T} = (p_1 \rightarrow p_2 \rightarrow \dots \rightarrow p_n)$ where each point $p_i$ ($i\in[1,n]$) contains a timestamp $t_i$ and a geographic coordinate specified by the latitude $lat_i$ and the longitude $lon_i$, \ie $p_i=(t_i,lat_i,lon_i)$.
 \end{definition}
 
 The spatial and temporal information are the most fundamental and important parts in trajectory data. In real life, the objects that generate trajectories are also possible to be equipped with various sensors, like taxicabs with speed sensors. In these situations, each trajectory point can also be assigned with other information besides the timestamp and geographic coordinate, \eg taxicab trajectories with driving speed and direction.
