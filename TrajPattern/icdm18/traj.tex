@@ -1,0 +1,191 @@
+%\documentclass[acmlarge]{acmart}
+\documentclass[conference]{IEEEtran}
+
+%\special{papersize=8.5in,11in}
+%\usepackage{latexsym}
+%\usepackage{amsfonts}
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+\usepackage{color}
+\usepackage{epsfig}
+\usepackage{xspace}
+\usepackage{graphicx,epstopdf}
+\usepackage{subfigure}
+%\usepackage{cite}
+\usepackage{balance}
+%\usepackage{amsmath, bm}
+\usepackage[english]{babel}
+
+\pdfpagewidth=8.5in
+\pdfpageheight=11in
+
+%%For removing copyright
+%\usepackage{blindtext}
+%\usepackage{etoolbox}
+%\makeatletter
+%\patchcmd{\maketitle}{\@copyrightspace}{}{}{}
+%\makeatother
+%%%%%End of removing copyright
+
+
+% ALGORITHMS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\SELECT}{\mbox{{\bf select}}\ }
+\newcommand{\FROM}{\mbox{{\bf from}\ }}
+\newcommand{\WHERE}{\mbox{\bf where}\ }
+\newcommand{\SUM}{\mbox{{\bf sum}}\ }
+\newcommand{\GROUPBY}{\mbox{{\bf group by}}\ }
+\newcommand{\HAVING}{\mbox{{\bf having}}\ }
+\newcommand{\CASE}{\mbox{{\bf case}}\ }
+\newcommand{\END}{\mbox{{\bf end}}\ }
+\newcommand{\WHEN}{\mbox{{\bf when}}\ }
+\newcommand{\EXISTS}{\mbox{{\bf exists}}\ }
+\newcommand{\COUNT}{\mbox{\kw{count}}}
+\newcommand{\INSERTINTO}{\mbox{{\bf insert into}}\ }
+\newcommand{\UPDATE}{\mbox{{\bf update}}\ }
+\newcommand{\SET}{\mbox{{\bf set}}\ }
+\newcommand{\IN}{\mbox{{\bf in}}\ }
+\newcommand{\If}{\mbox{\bf if}\ }
+\newcommand{\Let}{\mbox{\bf let}\ }
+\newcommand{\Call}{\mbox{\bf call}\ }
+\newcommand{\Then}{\mbox{\bf then}\ }
+\newcommand{\To}{\mbox{\bf to}\ }
+\newcommand{\Else}{\mbox{\bf else}\ }
+\newcommand{\ElseIf}{\mbox{\bf elseif}\ }
+
+\newcommand{\While}{\mbox{\bf while}\ }
+\newcommand{\Begin}{\mbox{\bf begin}\ }
+\newcommand{\End}{\mbox{\bf end}\ }
+\newcommand{\Do}{\mbox{\bf do}\ }
+\newcommand{\Downto}{\mbox{\bf downto}\ }
+\newcommand{\Repeat}{\mbox{\bf repeat}\ }
+\newcommand{\Until}{\mbox{\bf until}\ }
+\newcommand{\For}{\mbox{\bf for}\ }
+\newcommand{\Merge}{\mbox{\bf merge}\ }
+\newcommand{\Replace}{\mbox{\bf replace}\ }
+\newcommand{\Remove}{\mbox{\bf remove}\ }
+\newcommand{\Find}{\mbox{\bf find}\ }
+\newcommand{\Each}{\mbox{\bf each}\ }
+
+\newcommand{\ForEach}{\mbox{\bf for each}\ }
+\newcommand{\Or}{\mbox{\bf or}\ }
+%\renewcommand{\And}{\mbox{\bf and}\ }
+\newcommand{\Not}{\mbox{\bf not}\ }
+\newcommand{\Break}{\mbox{\bf break}\ }
+\newcommand{\Continue}{\mbox{\bf continue}\xspace}
+\newcommand{\Return}{\mbox{\bf return}\ }
+\newcommand{\Case}{\mbox{\bf case}\ }
+\newcommand{\Of}{\mbox{\bf of}\ }
+\newcommand{\EndCase}{\mbox{\bf end-case}\ }
+\newcommand{\NIL}{\mbox{\em nil}}
+\newcommand{\False}{\mbox{\em false}}
+\newcommand{\True}{\mbox{\em true}}
+\newcommand{\algAND}{{\sc and}\xspace}
+\newcommand{\OR}{{\sc or}\xspace}
+\newcommand{\NOT}{{\sc not}\xspace}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ALGORITHMS
+
+\newcommand{\eat}[1]{}
+\newcommand{\sttab}{\rule{0pt}{8pt}\\[-3ex]}
+\newcounter{ccc}
+\newcommand{\bcc}{\setcounter{ccc}{1}\theccc.}
+\newcommand{\icc}{\addtocounter{ccc}{1}\theccc.}
+\newcommand{\myhrule}{\rule[.5pt]{\hsize}{.5pt}}
+\newcommand{\mat}[2]{{\begin{tabbing}\hspace{#1}\=\+\kill #2\end{tabbing}}}
+\newcommand{\stitle}[1]{\vspace{0.5ex}\noindent{\bf #1}}
+\newcommand{\etitle}[1]{\vspace{0.5ex}\noindent{\em \underline{#1}}}
+\newcommand{\marked}[1]{\textcolor{red}{#1}}
+\newcommand{\markedb}[1]{\textcolor{blue}{#1}}
+\newcommand{\subsubtitle}[1]{\vspace{0.5ex}\noindent\underline{{\bf #1}}}
+
+%\newcommand{\stab}{\rule{0pt}{8pt}\\[-1.6ex]}
+%\newcommand{\sttab}{\rule{0pt}{8pt}\\[-2ex]}
+\newcommand{\sstab}{\rule{0pt}{8pt}\\[-2ex]}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\renewcommand{\ni}{\noindent}
+
+
+\newcommand{\ie}{\emph{i.e.,}\xspace}
+\newcommand{\eg}{\emph{e.g.,}\xspace}
+\newcommand{\wrt}{\emph{w.r.t.}\xspace}
+\newcommand{\aka}{\emph{a.k.a.}\xspace}
+\newcommand{\kw}[1]{{\ensuremath {\mathsf{#1}}}\xspace}
+
+%problems
+\newcommand{\ptsp}{{\sc ptsp}\xspace}
+\newcommand{\crp}{{\sc crp}\xspace}
+
+%concepts
+\newcommand{\scc}{{\sc SCC}\xspace}
+
+%data set
+\newcommand{\beijing}{{\sc Beijing}\xspace}
+\newcommand{\shenzhen}{{\sc Shenzhen}\xspace}
+
+%baselines
+\newcommand{\pagerank}{\kw{PRank}\xspace} %PageRank
+
+%metrics
+\newcommand{\PairAcc}{\kw{PairAcc}\xspace}
+
+
+
+
+% Document starts
+\begin{document}
+% Title portion
+\title{Trajectory Pattern Mining}
+
+
+\author{\IEEEauthorblockN{Hui Zhang\IEEEauthorrefmark{2},
+Renjun Hu\IEEEauthorrefmark{2},
+Shuai Ma\IEEEauthorrefmark{2},
+Hui Xiong\IEEEauthorrefmark{3},
+Jinpeng Huai\IEEEauthorrefmark{2}\\
+\IEEEauthorblockA{\IEEEauthorrefmark{2}SKLSDE Lab, Beihang University, Beijing, China}
+%\IEEEauthorblockA{Beijing Advanced Innovation Center for Big Data and Brain Computing, Beijing, China}
+\IEEEauthorblockA{\IEEEauthorrefmark{3}Rutgers University, USA}
+\{zhanghui, hurenjun, mashuai, huaijp\}@buaa.edu.cn \hspace{2ex} hxiong@rutgers.edu}}
+
+
+\maketitle
+
+\begin{abstract}
+abstract goes here.
+\end{abstract}
+
+\input{sec-intro}
+\input{sec-pre}
+\input{sec-method}
+\input{sec-exp}
+\input{sec-related}
+
+
+\section{Conclusions}
+\label{sec-conc}
+Conclusions.
+
+
+\eat{%%%%%%%%%%%%EAT
+\begin{acks}
+%\stitle{Acknowledgments}.
+This work is supported in part by  973 program ({\small No. 2014CB340300}), NSFC ({\small No. 61322207\&61421003}),  Special Funds of Beijing Municipal Science \& Technology Commission, and MSRA Collaborative Research Program.
+\end{acks}
+}%%%%%%%%%%%%%%%%EAT
+
+
+\bibliographystyle{abbrv}
+\begin{small}
+\bibliography{paper}
+\end{small}
+
+
+%APPENDICES are optional
+%\balancecolumns
+
+%\input{sec-app}   %%use this one for appendix
+
+
+
+\end{document}
