@@ -12,15 +12,16 @@ Research efforts have been made to exploit spatiotemporal similarities and road 
 %
 One study~\cite{HMM2013VLDB} uses spatio-temporal hidden Markov models to model correlations among different traffic time series.
 %
-The studies in~\cite{Zhu2013TMC,Shang2014KDD,Wang2014KDD} first construct a traffic condition matrix or tensor, and then recovers the missing values, \ie traffic speed, through compressive sensing~\cite{Zhu2013TMC}, and matrix/tensor decomposition~\cite{Shang2014KDD,Wang2014KDD}.
+The studies in~\cite{Zhu2013TMC,Shang2014KDD,Wang2014KDD} first construct a traffic condition matrix or tensor, and then recover the missing values, \ie traffic speed, through compressive sensing~\cite{Zhu2013TMC}, and matrix/tensor decomposition~\cite{Shang2014KDD,Wang2014KDD}.
 %
-In~\cite{LSM2016KDD}, the authors explore latent space modeling for road networks and take  into account the network topology as well as temporal and transition patterns.
+In~\cite{LSM2016KDD}, the authors explore latent space modeling for road networks and take into account the network topology, temporal patterns and transition patterns.
 %
-A situation-aware muti-task learning model is proposed in~\cite{MTL2017ICDM}, which clusters speed sensors to automatically identify traffic situations and trains sensors in the same situations as tasks.
+A situation-aware multi-task learning model is proposed in~\cite{MTL2017ICDM}, which clusters speed sensors to automatically identify traffic situations and trains sensors in the same situations as tasks.
 %
-Recently, deep learning techniques have also been applied, \eg recurrent convolutional neural network~\cite{DL2016ICDM} and long short term memory~\cite{DL2017SDM}.
+A probabilistic model fusing multi-source cross-domain data is proposed in~\cite{Lu2017Speed}.
+Recently, deep learning techniques have also been applied~\cite{DL2016ICDM,DL2017SDM}. %, \eg recurrent convolutional neural network~\cite{DL2016ICDM} and long short term memory~\cite{DL2017SDM}.
 
-Our proactive traffic speed prediction model is different from existing studies in two folds. 
+Our proactive traffic speed prediction model is different from existing studies in two folds.
 
 %\cite{traffic2011TRP}: multivariate spatial-temporal autoregressive; at a fine granularity (5 min) and over multiple time periods (12 * 5min)
 %\cite{TS2012ICDM}: short-term t+1 (1 time interval, e.g., 5min), long-term t+(>1); select either ARIMA or HAM w.r.t. t; retrieval the most similar incident;
