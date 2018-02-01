@@ -1,42 +1,77 @@
 \section{Preliminary}
 \label{sec-preliminary}
 
-In this section, we first introduce the necessary definitions %of road network and trajectory
-and then formulate the two problems to be investigated.
+In this section, we introduce the necessary definitions %of road network and trajectory
+and formulate the two problems to be investigated.
 
 \subsection{Basic Definitions}
 \label{subsec-definition}
 
-\begin{definition}[Road Network]A road network is a directed graph $G(V, E)$ where $V$ denotes the set of road intersections or road ends, and $E\subseteq V\times V$ denotes the set of road segments. A directed edge $(s, t)\in E$ %connecting nodes $s$ and $t$
-means that there exists a road segment that can only be traveled from $s$ to $t$.
+\begin{definition}[Road Network]A road network is a directed graph $\mathcal{N}=(V, E)$ where $V$ denotes the set of road intersections or road ends, and $E\subseteq V\times V$ denotes the set of directed road segments.
+%Each (directed) road segment $e=(e.s, e.t)\in E$ is associated with a starting point $e.s\in V$ and an end point $e.t\in V$.
+Each road segment $e=(e.s, e.t)$ can only be traveled from its starting point $e.s\in V$ to its end point $e.t\in V$.
 \end{definition}
 
-
-\begin{definition}[Route]A Route $R$ of a road network $G(V, E)$ is a sequence of .
+\begin{definition}[Route]A route $\mathcal{R}$ of road network $\mathcal{N}$ is a sequence of connected road segments, $\mathcal{R} = (e_1 \rightarrow e_2 \rightarrow \dots \rightarrow e_n)$ such that $e_i.t=e_{i+1}.s$ ($i\in[1, n-1]$).
 \end{definition}
 
-
-\begin{definition}[Trajectory]A trajectory $\mathcal{T}$ is a sequence of timestamped spatial points, $\mathcal{T} = (p_1 \rightarrow p_2 \rightarrow \dots \rightarrow p_n)$ where each point $p_i$ ($i\in[1,n]$) contains a timestamp $t_i$ and a geographic coordinate specified by the latitude $lat_i$ and the longitude $lon_i$, \ie $p_i=(t_i,lat_i,lon_i)$.
+\begin{definition}[Trajectory]A trajectory $\mathcal{T}$ is a sequence of timestamped spatial points, $\mathcal{T} = (p_1 \rightarrow p_2 \rightarrow \dots \rightarrow p_n)$ where each trajectory point $p_i$ ($i\in[1,n]$) contains a timestamp $time_i$ and a geographic coordinate specified by the latitude $lat_i$ and the longitude $lon_i$, \ie $p_i=(time_i,lat_i,lon_i)$.
 \end{definition}
 
-The spatial and temporal information are the most fundamental and important parts in trajectory data. In real life, the objects that generate trajectories are also possible to be equipped with various sensors, like taxicabs with speed sensors. In these situations, each trajectory point can also be assigned with other information besides the timestamp and geographic coordinate, \eg taxicab trajectories with driving speed and direction.
+In the above we give the most basic definition for trajectory. In practice, however, objects that generate trajectories are very likely to be equipped with various sensors. Thus, each point in a trajectory might contain additional information, \eg driving speed and direction.
+%besides the timestamp and geographic coordinate.
+
+%The spatial and temporal information are the most fundamental and important parts in trajectory data. In real life, the objects that generate trajectories are also possible to be equipped with various sensors, like taxicabs with speed sensors. In these situations, each trajectory point can also be assigned with other information besides the timestamp and geographic coordinate, \eg taxicab trajectories with driving speed and direction.
 
 
-\begin{definition}[Map Matching]Given a trajectory, map matching~\cite{Newson2009MM,WuMSZZCWKDD16} is the process of finding the most likely sequence of road segments on which the object passes and generates the trajectory.
+Trajectories and the underlying road network are bonded together through map matching~\cite{Newson2009MM,WuMSZZCWKDD16}. Given a road network $\mathcal{N}$ and a trajectory $\mathcal{T}$, map matching algorithms can find the most likely route $\mathcal{R}$ of $\mathcal{N}$ on which the trajectory $\mathcal{T}$ is generated.
+%Map matching is one of the most fundamental and important preprocessing steps in various trajectory data mining tasks~\cite{Zheng2015TDM}.
+In addition to the recovered routes, map matching also enables to monitor the traffic condition on road network. After mapping trajectory points onto the corresponding road segments, either (i) the sensor-detected speed or (ii) the ratio of the geographic distance to the time lag between two consecutive points can be used to estimate the traveling speeds on specific road segments.
+We use the concept of speed snapshot to record traffic condition, which is defined as below.
+
+\begin{definition}[Speed Snapshot]A speed snapshot $G$ of road network $\mathcal{N}=(V, E)$ is a weighted directed graph $G=(V,E,w)$ which has the same structure as $\mathcal{N}$ and the weight $w(e)$ ($e\in E$) is the traveling speed on $e$.
 \end{definition}
 
-Map matching plays an important role in various trajectory data mining tasks~\cite{Zheng2015TDM}. For instance, the real-time traffic condition can be tracked by mapping trajectory data on the road network. After map matching, either the ratio of the geographic distance to the time lag between two consecutive trajectory points or the sensor-detected speed on trajectory points can be used to estimate the traveling speed on specific road segments.
+Since traffic condition varies with respect to time, we divide the period of time that we consider into different fixed-length time intervals and consecutively label these time intervals from 1 to $T$. Suppose we are considering a period of 30 days and the length of time intervals equals to 10 minutes. We thus have $T=30\times144=4,320$ time intervals.
+Given a time interval $t\in[1,T]$, a speed snapshot $G_t=(V,E,w_t)$ is constructed to record the {\em real-time} traffic condition of time interval $t$ such that weight $w_t(e)$ ($e\in E$) averages all the recorded traveling speeds on road segment $e$ during $t$.
+Further, let $G'_t=(V,E,w'_t)$ record the {\em historical} traffic condition corresponding to time interval $t$ where weight $w'_t(e)$ ($e\in E$) averages all the recorded traveling speeds on road segment $e$ during the same time as $t$. For instance, let $t$ represent the time interval 8:00 am to 8:10 am
 
+%%%%%%%%%%%%%%%%%%% Notation Table
+\begin{table}[tb!]
+%\vspace{-2ex}
+\label{tab-data-stat}
+\caption{Summary of Notations}
+\vspace{-2.5ex}
+\begin{center}
+%\begin{small}
+\begin{tabular}{|c|l|} \hline
+\bf{Notation}   & \bf{Description}   \\ \hline\hline 
+$\mathcal{N}=(V,E)$ & road network with road intersection set $V$ and road segment set $E$ \\ 
+$\mathcal{R}$ & route \\
+$\mathcal{T} = (p_1 \rightarrow p_2 \rightarrow \dots \rightarrow p_n)$ & trajectory with trajectory points $p_i=(time_i,lat_i,lon_i)$\\
+$t$, $T$ & time interval, total number of time intervals \\
+$G_t$, $G'_t$ & speed snapshots recording real-time and historical traffic condition  \\
+\hline
+\end{tabular}
+\vspace{0ex}
+%\end{small}
+\end{center}
+\end{table}
+%%%%%%%%%%%%%%%%%%% Notation Table
 
+For the ease of presentation, Table~1 lists the notations that will be used throughout the paper.
+
+%\stitle{Remarks}. 
 \subsection{Problem Formulation}
 \label{subsec-problem}
 
-Based on the definitions above, we can now formally define the two problems studied in this work,  \ie~{\em proactive traffic speed prediction} and {\em collective route planning}.
+We next formally define the two problems studied in this work, namely proactive traffic speed prediction (\ptsp) and collective route planning (\crp).
 
-\begin{definition}[Proactive Traffic Speed Prediction]Given the real-time traffic speed on road segments, the problem of proactive traffic speed prediction (\ptsp) aims to predict the traffic speed of {\em arbitrarily} road segment at {\em arbitrarily} time in the future. %in $\Delta T$ time later, where the prediction time lag $\Delta T$ can be assigned {\em arbitrarily}.
+\begin{definition}[Proactive Traffic Speed Prediction]Given a road network $\mathcal{N}=(V,E)$ and a continuous sequence $(G_1, G_2, \dots, G_T)$ of speed snapshots recording the real-time traffic condition on $\mathcal{N}$, the problem of proactive traffic speed prediction (\ptsp) aims to predict the future traffic speed $w_t(e)$ of arbitrarily road segment in the following $H$ time intervals, \ie $e\in E$ and $t\in[T+1,T+H]$.
 \end{definition}
 
-The \ptsp problem differs from traditional traffic speed prediction in the sense that it xxx, while traditional traffic speed prediction focuses on predicting the speed at the next time slot or in the near future. {\bf detailed analysis of the difference.}
+Our \ptsp problem differs from the traditional traffic speed prediction problems in the sense that it
+xxx, while traditional traffic speed prediction focuses on predicting the speed at the next time slot or in the near future. {\bf detailed analysis of the difference.}
 
 fixed time points vs. time points in need
 
