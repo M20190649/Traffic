@@ -7,13 +7,21 @@ and formulate the two problems to be investigated.
 \subsection{Basic Definitions}
 \label{subsec-definition}
 
-\begin{definition}[Road Network]A road network is a directed graph $\mathcal{N}=(V, E)$ where $V$ denotes the set of road intersections or road ends, and $E\subseteq V\times V$ denotes the set of directed road segments.
-%Each (directed) road segment $e=(e.s, e.t)\in E$ is associated with a starting point $e.s\in V$ and an end point $e.t\in V$.
-Each road segment $e=(e.s, e.t)$ can only be traveled from its starting point $e.s\in V$ to its end point $e.t\in V$.
+\begin{definition}[Road Network]A road network is a directed graph $\mathcal{N}=(V, E)$ where $V$ is the set of road intersections or road ends, and $E\subseteq V\times V$ is the set of directed road segments.
+The starting and end points of road segment $e\in E$ are denoted by $e.u$ and $e.v$, respectively. That is, road segment $e=(e.u, e.v)$ with $e.u, e.v\in V$ and $e$ can only be traveled from $e.u$ to $e.v$.
 \end{definition}
 
-\begin{definition}[Route]A route $\mathcal{R}$ of road network $\mathcal{N}$ is a sequence of connected road segments, $\mathcal{R} = (e_1 \rightarrow e_2 \rightarrow \dots \rightarrow e_n)$ such that $e_i.t=e_{i+1}.s$ ($i\in[1, n-1]$).
+\begin{definition}[Route]A route $\mathcal{R}$ of road network $\mathcal{N}$ is a sequence of connected road segments, $\mathcal{R} = (e_1 \rightarrow e_2 \rightarrow \dots \rightarrow e_n)$ such that $e_i.v=e_{i+1}.u$ ($i\in[1, n-1]$). Similarly, the starting and end points of route $\mathcal{R}$ are denoted by $\mathcal{R}.u$ and $\mathcal{R}.v$, respectively, and we have $\mathcal{R}.u=e_1.u$ and $\mathcal{R}.v=e_n.v$.
 \end{definition}
+
+\begin{definition}[Recommended Route]Given a road network $\mathcal{N}=(V, E)$ and a route planning query $q=(u, v, \tau)$ with $u,v\in V$ being the starting and end locations and $\tau$ being the starting time, the recommended route $\mathcal{R}_q$ with respect to query $q$ is a route of $\mathcal{N}$ such that $\mathcal{R}_q.u=u$, $\mathcal{R}_q.v=v$ and $\mathcal{R}_q$ is {\em expected fastest} starting at time $\tau$:
+\begin{equation} \label{eq-expected}
+\mathcal{R}_q = \argmin_{\mathcal{R}.u=u, \mathcal{R}.v=v} \mathbb{E}(\mathcal{R}|\tau),
+\end{equation}
+where $\mathbb{E}(\mathcal{R}|\tau)$ is the expected traveling time of route $\mathcal{R}$ starting at time $\tau$.
+\end{definition}
+
+Without loss of generality, we assume that both of the starting and end locations of queries are . It is straightforward to extend to on segments.
 
 \begin{definition}[Trajectory]A trajectory $\mathcal{T}$ is a sequence of timestamped spatial points, $\mathcal{T} = (p_1 \rightarrow p_2 \rightarrow \dots \rightarrow p_n)$ where each trajectory point $p_i$ ($i\in[1,n]$) contains a timestamp $time_i$ and a geographic coordinate specified by the latitude $lat_i$ and the longitude $lon_i$, \ie $p_i=(time_i,lat_i,lon_i)$.
 \end{definition}
@@ -38,7 +46,7 @@ Since traffic condition varies with respect to time, we first divide the period 
 %
 Given a time interval $t\in[1,T]$, \ie time intervals are represented by their labels, a real-time speed snapshot $G_t=(V,E,w_t)$ is constructed to record the real-time traffic condition of time interval $t$. The weight $w_t(e)$ ($e\in E$) averages all the recorded traveling speeds on road segment $e$ within time interval $t$.
 %
-Similarly, a historical speed snapshot $G'_t=(V,E,w'_t)$ is constructed to record the historical traffic condition corresponding to time interval $t$. We distinguish the historical traffic conditions on weekdays and weekends. That is, the weight $w'_t(e)$ ($e\in E$) averages all the recorded traveling speeds on road segment $e$ during the same time as $t$ on weekdays or holidays, \eg during 8:00 a.m. and 8:10 a.m. on all weekdays. 
+Similarly, a historical speed snapshot $G'_t=(V,E,w'_t)$ is constructed to record the historical traffic condition corresponding to time interval $t$. We distinguish the historical traffic conditions on weekdays and weekends. That is, the weight $w'_t(e)$ ($e\in E$) averages all the recorded traveling speeds on road segment $e$ during the same time as $t$ on weekdays or holidays, \eg during 8:00 a.m. and 8:10 a.m. on all weekdays.
 
 %%%%%%%%%%%%%%%%%%% Notation Table
 \begin{table}[tb!]
@@ -51,7 +59,9 @@ Similarly, a historical speed snapshot $G'_t=(V,E,w'_t)$ is constructed to recor
 \begin{tabular}{|c|l|} \hline
 \bf{Notation}   & \bf{Description}   \\ \hline\hline
 $\mathcal{N}=(V,E)$ & road network with road intersection set $V$ and road segment set $E$ \\
-$\mathcal{R}$ & route \\
+$\mathcal{R}=(e_1 \rightarrow e_2 \rightarrow \dots \rightarrow e_n)$, & route, \ie a sequence of connected road segments $e_i$ ($i\in[1,n]$) \\
+$\mathcal{R}_q$ &  recommended route \wrt route planning query $q$\\
+$\mathbb{E}(\mathcal{R}|\tau)$ & expected traveling time of route $\mathcal{R}$ starting at time $\tau$ \\
 $\mathcal{T} = (p_1 \rightarrow p_2 \rightarrow \dots \rightarrow p_n)$ & trajectory with trajectory points $p_i=(time_i,lat_i,lon_i)$\\
 $t$, $T$ & time interval, total number of time intervals \\
 $G_t$, $G'_t$ & speed snapshots recording real-time and historical traffic condition  \\
@@ -70,6 +80,8 @@ For the ease of presentation, Table~1 lists the notations that will be used thro
 \label{subsec-problem}
 
 We next formally define the two problems studied in this work, namely proactive traffic speed prediction (\ptsp) and collective route planning (\crp).
+
+The basic
 
 \begin{definition}[Proactive Traffic Speed Prediction]Given a road network $\mathcal{N}=(V,E)$ and a continuous sequence $(G_1, G_2, \dots, G_T)$ of speed snapshots recording the real-time traffic condition on $\mathcal{N}$, the problem of proactive traffic speed prediction (\ptsp) aims to predict the future traffic speed $w_t(e)$ of arbitrarily road segment in the following $H$ time intervals, \ie $e\in E$ and $t\in[T+1,T+H]$.
 \end{definition}
