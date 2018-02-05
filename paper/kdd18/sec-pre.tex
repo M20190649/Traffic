@@ -26,15 +26,19 @@ In the above we give the most basic definition for trajectory. In practice, howe
 
 Trajectories and the underlying road network are bonded together through map matching~\cite{Newson2009MM,WuMSZZCWKDD16}. Given a road network $\mathcal{N}$ and a trajectory $\mathcal{T}$, map matching algorithms can find the most likely route $\mathcal{R}$ of $\mathcal{N}$ on which the trajectory $\mathcal{T}$ is generated.
 %Map matching is one of the most fundamental and important preprocessing steps in various trajectory data mining tasks~\cite{Zheng2015TDM}.
-In addition to the recovered routes, map matching also enables to monitor the traffic condition on road network. After mapping trajectory points onto the corresponding road segments, either (i) the sensor-detected speed or (ii) the ratio of the geographic distance to the time lag between two consecutive points can be used to estimate the traveling speeds on specific road segments.
+In addition to the recovered routes, map matching also enables to monitor the traffic condition on road network. After mapping trajectory points onto the corresponding road segments, either the sensor-detected speed or the ratio of the geographic distance to the time lag between two consecutive points can be used to estimate the traveling speeds on specific road segments.
 We use the concept of speed snapshot to record traffic condition, which is defined as below.
 
 \begin{definition}[Speed Snapshot]A speed snapshot $G$ of road network $\mathcal{N}=(V, E)$ is a weighted directed graph $G=(V,E,w)$ which has the same structure as $\mathcal{N}$ and the weight $w(e)$ ($e\in E$) is the traveling speed on $e$.
 \end{definition}
 
-Since traffic condition varies with respect to time, we divide the period of time that we consider into different fixed-length time intervals and consecutively label these time intervals from 1 to $T$. Suppose we are considering a period of 30 days and the length of time intervals equals to 10 minutes. We thus have $T=30\times144=4,320$ time intervals.
-Given a time interval $t\in[1,T]$, a speed snapshot $G_t=(V,E,w_t)$ is constructed to record the {\em real-time} traffic condition of time interval $t$ such that weight $w_t(e)$ ($e\in E$) averages all the recorded traveling speeds on road segment $e$ during $t$.
-Further, let $G'_t=(V,E,w'_t)$ record the {\em historical} traffic condition corresponding to time interval $t$ where weight $w'_t(e)$ ($e\in E$) averages all the recorded traveling speeds on road segment $e$ during the same time as $t$. For instance, let $t$ represent the time interval 8:00 am to 8:10 am
+We construct two types of speed snapshots, \ie {\em real-time speed snapshots} and {\em historical speed snapshots}. %to record real-time and historical traffic conditions, respectively.
+%
+Since traffic condition varies with respect to time, we first divide the period of time that we consider into different fixed-length time intervals which are consecutively labeled integers from 1 to $T$. Suppose we are considering a period of 30 days and the length of time intervals equals to 10 minutes. We thus have $T=30\times144=4,320$ time intervals.
+%
+Given a time interval $t\in[1,T]$, \ie time intervals are represented by their labels, a real-time speed snapshot $G_t=(V,E,w_t)$ is constructed to record the real-time traffic condition of time interval $t$. The weight $w_t(e)$ ($e\in E$) averages all the recorded traveling speeds on road segment $e$ within time interval $t$.
+%
+Similarly, a historical speed snapshot $G'_t=(V,E,w'_t)$ is constructed to record the historical traffic condition corresponding to time interval $t$. We distinguish the historical traffic conditions on weekdays and weekends. That is, the weight $w'_t(e)$ ($e\in E$) averages all the recorded traveling speeds on road segment $e$ during the same time as $t$ on weekdays or holidays, \eg during 8:00 a.m. and 8:10 a.m. on all weekdays. 
 
 %%%%%%%%%%%%%%%%%%% Notation Table
 \begin{table}[tb!]
@@ -45,8 +49,8 @@ Further, let $G'_t=(V,E,w'_t)$ record the {\em historical} traffic condition cor
 \begin{center}
 %\begin{small}
 \begin{tabular}{|c|l|} \hline
-\bf{Notation}   & \bf{Description}   \\ \hline\hline 
-$\mathcal{N}=(V,E)$ & road network with road intersection set $V$ and road segment set $E$ \\ 
+\bf{Notation}   & \bf{Description}   \\ \hline\hline
+$\mathcal{N}=(V,E)$ & road network with road intersection set $V$ and road segment set $E$ \\
 $\mathcal{R}$ & route \\
 $\mathcal{T} = (p_1 \rightarrow p_2 \rightarrow \dots \rightarrow p_n)$ & trajectory with trajectory points $p_i=(time_i,lat_i,lon_i)$\\
 $t$, $T$ & time interval, total number of time intervals \\
@@ -61,7 +65,7 @@ $G_t$, $G'_t$ & speed snapshots recording real-time and historical traffic condi
 
 For the ease of presentation, Table~1 lists the notations that will be used throughout the paper.
 
-%\stitle{Remarks}. 
+%\stitle{Remarks}.
 \subsection{Problem Formulation}
 \label{subsec-problem}
 

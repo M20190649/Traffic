@@ -8,16 +8,11 @@ Using two real-life datasets, we conduct an extensive experimental study of , co
 
 We first introduce the settings of our experimental study.
 
-\stitle{Datasets}. We chose two datasets, \ie~\beijing and \shenzhen,  to test our approach.
+\stitle{Datasets}. We chose two datasets, \ie~\beijing and \sanfan,  to test our approach.
 %
-Each of the two datasets consists of the road network\footnote{https://mapzen.com/data/metro-extracts/metro/beijing\_china/ \& https://mapzen.com/data/metro-extracts/metro/shenzhen\_china/} of the corresponding city in China (\ie city Beijing and city Shenzhen) and the taxi trajectory data. The trajectories of both \beijing and \shenzhen are collected in three months. Table~1 gives a summary of some statistics on the two datasets.
+Each of the two datasets consists of the road network\footnote{http://extract.bbbike.org/. The (minlat, minlon, maxlat, maxlon) are (39.414, 115.686, 40.426, 117.119) and %(37.350, -122.550, 38.000, -122.000) (sf large)
+(37.705, -122.515, 37.813, -122.355) for \beijing and \sanfan, respectively.} of the corresponding city and the taxi trajectory data. The trajectories of both \beijing and \sanfan are collected in three months. Table~2 gives a summary of some dataset statistics.
 
-%\beijing Range: minlat="39.414" minlon="115.686" maxlat="40.426" maxlon="117.119", i.e., 112.5km(1.012) x 123.0(1.433)km
-%road network nodes: 96406
-%road network directed edges: 216153
-%road network undirected edges: 129955
-%total distance (km): 31528.9246597
-%weakly connected component: 1465 (91223, 58, 45, ...)
 
 %%%%%%%%%%%%%%%%%%% Dataset Statistics Table
 \begin{table}[tb!]
@@ -32,7 +27,8 @@ Each of the two datasets consists of the road network\footnote{https://mapzen.co
 \raisebox{1ex}[0pt]{\bf Datasets} & {\bf \# of Nodes} & {\bf \# of Edges} & {\bf \# of Taxicabs} & {\bf Time Span} & {\bf \# of Points} \\
 \hline
 \beijing      &  96,406 & 216,153 & 12,791 & 12/01/2013 -- 02/28/2014 & x          \\ \hline
-\shenzhen      &  80,771 & 176,112 & 2,508 & 04/01/2011 -- 06/30/2011 & y       \\ \hline
+%\sanfan      &  233,279 & 568,927 & 536 & 04/01/2011 -- 06/30/2011 & y       \\ \hline
+\sanfan      &  25,837 & 65,121 & 536 & 05/17/2008 -- 06/10/2008 & y       \\ \hline
 \end{tabular}
 \vspace{0ex}
 %\end{small}
@@ -48,8 +44,7 @@ Each trajectory point contains: (a) a timestamp, (b) a location specified by the
 \stitle{Algorithms and implementation}.
 Algorithms were all implemented with Java, including the state of the art algorithm  and the synthetic data generator that are available at {\small http://www.cs.ucsb.edu/\~dbl/software.php}.
 
-All experiments were run on a PC with 2 Intel Xeon
-E5--2630 2.4GHz CPUs and 64 GB of memory. The usage of virtual memory was forbidden in all our tests. When quantity measures are evaluated, the test was repeated over 5 times and the average is reported here.
+All experiments were run on a PC with 2 Intel Xeon E5--2630 2.4GHz CPUs and 64 GB of memory. The usage of virtual memory was forbidden in all our tests. When quantity measures are evaluated, the test was repeated over 5 times and the average is reported here.
 
 
 
